@@ -76,7 +76,7 @@ exports.logout = async (req, res, next) => {
   User.findByPk(req.user.email)
     .then(async (user) => {
       if (user) {
-        user.logoutAt = Date.now();
+        user.logoutAt = Date.now();//change the logoutAt attripute to be Date.now() so that allow you to check the time that the user logedout so if he entered any unotharized page and send a request or do any thing he will be forworded to login page, i will use this property in protect function 
         return await user.save();
       }
     })
