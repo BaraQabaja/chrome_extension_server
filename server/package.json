@@ -4,7 +4,10 @@
   "description": "chrome extension with login feature",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node index.js"
+  },
+  "engines":{
+    "node":"18.3.0"
   },
   "author": "Bara Qabaja",
   "license": "ISC",
@@ -20,9 +23,6 @@
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20",
-    "passport": "^0.5.0",
-    "passport-facebook": "^3.0.0",
-    "passport-google-oauth20": "^2.0.0",
     "pg": "^8.11.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.33.0"

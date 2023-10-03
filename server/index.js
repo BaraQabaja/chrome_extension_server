@@ -20,13 +20,13 @@ const userRoutes =require('./routes/user_route');
 
 
 
-//env file
-//auth controller
+//auth controller (login,logout)
  const auth =require('./controllers/auth_controller');
 
+
+ //env file
 const dotenv = require('dotenv');
 dotenv.config({path:'config.env'});
-// create token function
 // const ApiError = require('../utils/apiError');
 
 
