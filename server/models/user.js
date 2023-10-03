@@ -12,7 +12,7 @@ const User = sequelize.define("user", {
     allowNull: false,
     requaired: true,
     type: Sequelize.STRING,
-    
+
     // primaryKey: true,
   },
 
@@ -21,6 +21,10 @@ const User = sequelize.define("user", {
     allowNull: false,
     requaired: true,
     len: [8, 50],
-  }
+  },
+
+  logoutAt: {
+    type: Sequelize.DATE,
+  },
 });
 module.exports = User;
