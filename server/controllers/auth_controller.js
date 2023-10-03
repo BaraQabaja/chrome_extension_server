@@ -20,7 +20,7 @@ exports.login = async (req, res, next) => {
       }
       //create token with email 
       const token = createToken(user.email);
-      res.status(200).json({ user: user, token });
+      res.status(200).json({ user: user, token });//userInfo and token will be returned to store in the localhost
     })
     .catch((err) => {
       res.status(500).send(err.message || "Something went wrong");
@@ -60,7 +60,7 @@ exports.protect = async (req, res, next) => {
     res.send("The user that belong to this token does no longer exist");
   }
 
-
+//check if the user logedout or not
   if (currentUser.logoutAt) {
     const logoutAt = parseInt(currentUser.logoutAt.getTime() / 1000, 10);
     if (logoutAt > decoded.iat) {

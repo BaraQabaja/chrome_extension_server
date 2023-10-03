@@ -1,13 +1,10 @@
 const User = require("../models/user");
-
-const { Op } = require("sequelize");
-
 const bcrypt = require("bcrypt");
 
-exports.createUser = async (req, res) => {
-  console.log(req.body);
 
-  console.log("done");
+//create user function
+exports.createUser = async (req, res) => {
+//12 is the number of rounds of hashing. so the password hashing process is more computationally expensive and therefore more secure against brute-force attacks.
   bcrypt
     .hash(req.body.password, 12)
     .then((hashPassword) => {
@@ -15,6 +12,7 @@ exports.createUser = async (req, res) => {
         const username = req.body.username;
         const password = hashPassword;
         const email=req.body.email
+        //create new user with by the given data
         User.create({
           email:email,
           username: username,
@@ -44,9 +42,8 @@ exports.getPersonalInformations = (req, res) => {
   User.findByPk(userEmail)
     .then((Info) => {
       if (Info) {
-        // console.log("user data sent",Info)
         res.status(200).json({ Information: Info });
-      } else res.send("something went wrong");
+      } else res.send("something went wrong");//if no data returned by findByPk function that means that something happend in the middle
     })
     .catch((err) => {
       res.status(500).send(err.message);
@@ -59,7 +56,6 @@ exports.updateUsername = async (req, res, next) => {
   User.findByPk(email)
     .then(async (user) => {
       if (user) {
-        // console.log("username", user, newUsername);
         user.username = newUsername;
         await user.save(); // await to save the user changes
         res.send("username changed");
